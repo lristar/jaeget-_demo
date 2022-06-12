@@ -6,11 +6,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func hello(ctx *gin.Context) {
+type Service struct {
+}
+
+func (s *Service) Hello(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"msg": "hello"})
 }
 
-func hay(ctx *gin.Context) {
+func (s *Service) Hay(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{"msg": "hay"})
 }
 
