@@ -1,8 +1,10 @@
 package api
 
-import "github.com/gin-gonic/gin"
+import (
+	"ending/test/jaeget-_demo/internal/pkg"
+)
 
 type IHTTPSERVICE interface {
-	Hello(ctx *gin.Context)
-	Hay(ctx *gin.Context)
+	Hello(ctx *pkg.Context)
+	Hay(ctx *pkg.Context)
 }
