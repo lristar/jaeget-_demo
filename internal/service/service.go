@@ -24,6 +24,7 @@ func Closed() error {
 }
 
 func (s *Service) Hello(ctx *pkg.Context) {
+
 	ctx.JSON(http.StatusOK, gin.H{"msg": "hello"})
 }
 
