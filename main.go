@@ -1,7 +1,7 @@
 package main
 
 import (
-	"ending/test/jaeget-_demo/app"
+	"jaegerDemo/app"
 )
 
 func main() {

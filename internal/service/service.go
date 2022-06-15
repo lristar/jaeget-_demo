@@ -1,11 +1,12 @@
 package demo
 
 import (
-	"ending/test/jaeget-_demo/internal/api"
-	"ending/test/jaeget-_demo/internal/pkg"
 	"fmt"
-	"github.com/gin-gonic/gin"
+	"jaegerDemo/internal/api"
+	"jaegerDemo/internal/pkg"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Service struct {

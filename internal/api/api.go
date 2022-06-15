@@ -1,7 +1,7 @@
 package api
 
 import (
-	"ending/test/jaeget-_demo/internal/pkg"
+	"jaegerDemo/internal/pkg"
 )
 
 type IHTTPSERVICE interface {

@@ -2,15 +2,16 @@ package app
 
 import (
 	"bytes"
-	"ending/test/jaeget-_demo/internal/api"
-	server "ending/test/jaeget-_demo/internal/server"
-	service "ending/test/jaeget-_demo/internal/service"
 	"fmt"
+	"io/ioutil"
+	"jaegerDemo/internal/api"
+	server "jaegerDemo/internal/server"
+	service "jaegerDemo/internal/service"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/opentracing-contrib/go-gin/ginhttp"
 	"github.com/opentracing/opentracing-go"
-	"io/ioutil"
-	"net/http"
 )
 
 type App struct {
@@ -52,7 +53,6 @@ func New() (*App, CloseMap, error) {
 }
 
 func (a *App) Run() {
-	a.g = api.NewRouter(a.g)
 	a.g.Use(ginhttp.Middleware(a.jae, ginhttp.OperationNameFunc(func(r *http.Request) string {
 		return fmt.Sprintf("HTTP %s %s", r.Method, r.URL.Path)
 	}), ginhttp.MWSpanObserver(func(span opentracing.Span, r *http.Request) {
@@ -64,6 +64,7 @@ func (a *App) Run() {
 		span.SetTag("http.body", string(bts))
 		r.Body = ioutil.NopCloser(bytes.NewBuffer(bts))
 	})))
+	a.g = api.NewRouter(a.g)
 	err := a.g.Run(":8080")
 	if err != nil {
 		panic(err)
